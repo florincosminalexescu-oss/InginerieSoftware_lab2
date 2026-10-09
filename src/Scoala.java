@@ -3,12 +3,61 @@ import java.util.Map;
 
 public class Scoala {
 
-    private Map<String,Clasa> clase=new HashMap<>();
+    private Map<String, Clasa> clase;
 
-   public void adaugaClasa(String numeCLasa,Clasa clasa){};
-    public void eliminaClasa(String numeClasa) {};
-    public void adaugaElevInClasa(String numeElev, Elev elev){};
-    public void  eliminaElevDupaNume(String numeElev){};
-    public int getNumarClase(){};
-    public int getTotalElevi(){};
+    public void adaugaClasa(String numeClasa, Clasa clasa) {
+
+        this.clase.put(numeClasa,clasa);
+    }
+
+
+
+    public void eliminaClasa(String numeClasa) {
+
+        this.clase.remove(numeClasa);
+    }
+
+
+
+    public void adaugaElevInClasa(String numeClasa, Elev elev) {
+
+        this.clase.get(numeClasa).adaugaElev(elev);
+    }
+
+
+
+    public void eliminaElevDupaNume(String numeElev) {
+
+        for(Clasa clasa: this.clase.values())
+        {
+            clasa.getElevi().removeIf(elev -> elev.getNume().equalsIgnoreCase(numeElev));
+
+        }
+
+    }
+
+
+
+    public int getNumarClase() {
+        return this.clase.size();
+    }
+
+
+
+    public int getTotalElevi() {
+        int total=0;
+
+        for(Clasa c : this.clase.values()){
+            total+=c.getTotalElevi();
+        }
+
+        return total;
+    }
+
+   public Scoala (){
+        this.clase=new HashMap<>();
+    }
+
+
+
 }

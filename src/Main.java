@@ -3,11 +3,19 @@
 void main() {
     //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
     // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+   Elev elev1=new Elev("Cosmin",Gen.Masculin);
+   Elev elev2=new Elev("Bogdan",Gen.Feminin);
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
-    }
+   System.out.println(elev1.getNume()+" "+elev2.getGen());
+
+
+   Clasa A1=new Clasa(2,NumarClasa.IV,'A');
+   A1.adaugaElev(elev1);
+   A1.adaugaElev(elev2);
+
+
+   System.out.println(A1.getTotalElevi());
+
+   System.out.println(A1.getLitera());
+
 }
