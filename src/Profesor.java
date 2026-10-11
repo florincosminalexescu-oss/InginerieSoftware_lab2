@@ -1,7 +1,11 @@
 public class Profesor {
-
-    private Gen gen;
     private String nume;
 
+    public Profesor(String nume) {
+        this.nume = nume;
+    }
 
+    public String getNume() {
+        return nume;
+    }
 }

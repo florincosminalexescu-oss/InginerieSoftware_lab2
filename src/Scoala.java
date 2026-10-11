@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Scoala {
@@ -29,6 +31,31 @@ public class Scoala {
     }
 
 
+    public void inscrieElevLaActivitate(Elev elev,String numeActivitate){
+
+        Activitate activitate=this.activitati.get(numeActivitate);
+
+        if(activitate!=null && elev!=null){
+
+            activitate.inscrieElev(elev);
+            elev.adaugaActivitate(numeActivitate);
+
+        }
+
+
+    }
+
+
+    public void retrageElevDinActivitate(Elev elev, String numeActivitate) {
+        Activitate activitate = this.activitati.get(numeActivitate);
+
+        if (activitate != null && elev != null) {
+            activitate.stergeElev(elev);
+
+            elev.eliminaActivitate(numeActivitate);
+        }
+    }
+
 
     public void adaugaElevInClasa(String numeClasa, Elev elev) {
 
@@ -47,6 +74,33 @@ public class Scoala {
 
     }
 
+
+    public void afiseazaTopActivitati(){
+
+        List<Activitate> listaActivitati = new ArrayList<>(this.activitati.values());
+        listaActivitati.sort((a1,a2)->Integer.compare(a2.getElevi().size(),a2.getElevi().size()));
+
+
+        System.out.println("--- TOP ---");
+        for (Activitate activitate : listaActivitati) {
+            System.out.println(activitate.getNume() + " - " + activitate.getElevi().size() + " elevi");
+        }
+    }
+
+
+    public int getNumarEleviCuActivitati() {
+        int numarElevi = 0;
+
+        for (Clasa clasa : this.clase.values()) {
+            for (Elev elev : clasa.getElevi()) {
+                if (!elev.getActivitati().isEmpty()) {
+                    numarElevi++;
+                }
+            }
+        }
+
+        return numarElevi;
+    }
 
 
     public int getNumarClase() {

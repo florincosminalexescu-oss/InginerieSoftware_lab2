@@ -4,11 +4,11 @@ import java.util.Set;
 public class Activitate {
 
     private String nume;
-    private String profesorCoordonator;
+    private Profesor profesorCoordonator;
     private Set<Elev> elevi;
 
 
-    public Activitate(String nume, String profesorCoordonator) {
+    public Activitate(String nume, Profesor profesorCoordonator) {
 
         this.nume = nume;
         this.profesorCoordonator = profesorCoordonator;
@@ -36,7 +36,7 @@ public class Activitate {
         return nume;
     }
 
-    public String getNumeCoordonator() {
+    public Profesor getNumeCoordonator() {
         return profesorCoordonator;
     }
 
